@@ -24,13 +24,6 @@ print(dat)
 
 
 
-
-
-
-
-
-
-
 #ex-02
 import os
 thisfolder = os.path.dirname(os.path.abspath(__file__))
