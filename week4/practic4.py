@@ -30,3 +30,13 @@ print(dat)
 
 
 
+
+#ex-02
+import os
+thisfolder = os.path.dirname(os.path.abspath(__file__))
+data = os.path.join(thisfolder, "netflix_titles.csv")
+
+data = pd.read_csv(data)
+
+print((data["release_year"]> 2015) & (data["cast"].str.contains("Kevin Spacey")) | (data["cast"].str.contains("Leonardo DiCaprio")))
+
