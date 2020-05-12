@@ -33,3 +33,14 @@ data = pd.read_csv(data)
 
 print((data["release_year"]> 2015) & (data["cast"].str.contains("Kevin Spacey")) | (data["cast"].str.contains("Leonardo DiCaprio")))
 
+
+
+
+#ex-03
+
+group_by_directors = data.groupby(['director']).count()
+group_by_directors["count"]=group_by_directors["show_id"]
+
+print(group_by_directors)
+
+
