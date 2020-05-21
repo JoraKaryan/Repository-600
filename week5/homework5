@@ -1,0 +1,98 @@
+#ex-1
+
+class Roman_Numeral :
+    def convert(self, s):
+        roman_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        number = 0
+        for i in range(len(s)):
+            if i > 0 and roman_dict[s[i]] > roman_dict[s[i - 1]]:
+                number += roman_dict[s[i]] - 2 * roman_dict[s[i - 1]]
+            else:
+                number += roman_dict[s[i]]
+        return number
+
+print(Roman_Numeral().convert('XII'))
+
+
+#ex-2
+class Person:
+    def __init__(self, name, last_name, age, gender, student, password):
+        self.name = name
+        self.last_name = last_name
+        self.age = age
+        self.gender = gender
+        self.student = student
+        self.__password = password        #private
+
+    def Greeting(self, second_person):
+        self.second_person = second_person
+        print("Welcome dear {}".format(self.name))
+
+    def Goodbye(self):
+        print("Bye everyone!")
+
+    def Favourite_num(self, num1):
+        self.num1 = num1
+        print("My favourite number is {} ".format(num1))
+
+
+man = Person("John", "Terry", 36, "male", False, 555005)
+
+print(man.Greeting(man.name))
+print(man.Goodbye())
+print(man.Favourite_num(44))    # amen print()-ic heto None a berum
+
+
+#ex-3
+
+
+class Polygon:
+    def __init__(self, n_of_sides):
+        self.n = n_of_sides
+        self.sides = list()
+
+        
+    def input_sides(self, sides):
+        self.sides = sides
+            
+    def get_perimeter(self):
+        return sum(self.sides)
+
+    
+
+class Quadriliteral(Polygon):
+    def __init__(self):
+        Polygon.__init__(self, 4)
+
+
+    def get_area(self):
+        a, b, c, d = self.sides
+        # calculate the semi-perimeter
+        s = self.get_perimeter() / 2
+        area = ((s-a)*(s-b)*(s-c)*(s-d)) ** 0.5
+        print('The area is {}'.format(area))
+
+class Rectangle(Quadriliteral):
+    def __init__(self):
+        Quadriliteral.__init__(self)
+
+
+class Triangle(Rectangle):
+    def __init__(self):
+        Quadriliteral.__init__(self)
+
+class Square(Triangle):
+    def __init__(self):
+        Quadriliteral.__init__(self)
+
+
+obj = Square()
+obj.input_sides([2,2,2,2])
+obj.get_perimeter()
+
+print(obj.get_area())
+print(obj.get_perimeter())
+
+
+
+        
